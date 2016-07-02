@@ -1,4 +1,4 @@
-package co.s4n.dronedelivery;
+package co.s4n.dronedelivery.core;
 
 public class Position {
 

@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import co.s4n.dronedelivery.*;
+import co.s4n.dronedelivery.core.*;
 
 public class DroneRotationTests {
 	
