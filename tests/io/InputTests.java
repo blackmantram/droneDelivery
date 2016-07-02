@@ -1,3 +1,4 @@
+package io;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -10,7 +11,6 @@ import co.s4n.dronedelivery.io.Tokens;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.stubbing.OngoingStubbing;
 
 public class InputTests {
 	
