@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import co.s4n.dronedelivery.core.*;
+import co.s4n.dronedelivery.io.IReadListener;
 import co.s4n.dronedelivery.io.InputReader;
 import co.s4n.dronedelivery.io.Tokens;
 
@@ -19,7 +20,7 @@ public class InputTests {
 	BufferedReader reader;
 	
 	@Before
-	public void Setup()
+	public void setup()
 	{
 		drone = new Drone();
 		inputReader = new InputReader(drone);

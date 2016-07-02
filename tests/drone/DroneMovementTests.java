@@ -12,7 +12,7 @@ public class DroneMovementTests {
 Drone drone;
 	
 	@Before
-	public void Setup()
+	public void setup()
 	{
 		drone = new Drone();
 	}

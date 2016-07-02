@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import co.s4n.dronedelivery.core.Drone;
-import io.IReadListener;
 
 public class InputReader {
 	
