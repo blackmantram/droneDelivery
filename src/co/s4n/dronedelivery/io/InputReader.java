@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import co.s4n.dronedelivery.core.Drone;
+import io.IReadListener;
 
 public class InputReader {
 	
 	private Drone drone;
+	private IReadListener readListener;
 	
 	public InputReader(Drone drone){
 		this.drone = drone;
@@ -22,6 +24,8 @@ public class InputReader {
 				String token = Character.toString(line.charAt(i));
 				readToken(token);
 			}
+			if (readListener != null)
+				readListener.lineRead();
 		}
 	}
 	
@@ -33,5 +37,9 @@ public class InputReader {
 			drone.turnRight();
 		if (token.equals(Tokens.LEFT))
 			drone.turnLeft();
+	}
+
+	public void addReadListener(IReadListener readListener) {
+		this.readListener = readListener;
 	}
 }

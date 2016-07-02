@@ -60,6 +60,15 @@ public class InputTests {
 		assertPosition(1,1,Direction.NORTH);
 	}
 	
+	@Test
+	public void testCallsBackOnLineread() throws IOException {
+		IReadListener readListener = mock(IReadListener.class);
+		inputReader.addReadListener(readListener);
+		readPath(Tokens.FORWARD + Tokens.RIGHT + Tokens.FORWARD);
+		inputReader.read(reader);
+		verify(readListener, atMost(1)).lineRead();
+	}
+	
 	private void readPath(String path) throws IOException
 	{
 		when(reader.readLine()).thenReturn(path).thenReturn(null);
