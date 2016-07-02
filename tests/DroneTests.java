@@ -1,17 +1,32 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import co.s4n.dronedelivery.*;
 
 public class DroneTests {
+	
+	Drone drone;
+	
+	@Before
+	public void Setup()
+	{
+		drone = new Drone();
+	}
 
 	@Test
     public void testMovesForward() {
-        Drone drone = new Drone();
         drone.moveForward();
-        Direction direction = drone.getCurrentPosition();
-        assertEquals(1, direction.y);
+        Position position = drone.getCurrentPosition();
+        assertEquals(1, position.y);
+    }
+	
+	@Test
+    public void testTurnsRight() {
+        drone.turnRight();
+        Position position = drone.getCurrentPosition();
+        assertEquals(Direction.EAST, position.direction);
     }
 
 }
