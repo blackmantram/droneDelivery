@@ -1,5 +1,5 @@
 package co.s4n.dronedelivery;
 
 public enum Direction {
-	EAST, WEST
+	EAST, WEST, NORTH, SOUTH
 }
