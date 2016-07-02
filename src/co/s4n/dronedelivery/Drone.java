@@ -13,9 +13,13 @@ public class Drone {
 	
     public void moveForward() {
     	if (currentPosition.direction == Direction.NORTH)
-    		currentPosition.y = 1;
+    		currentPosition.y++;
     	else if (currentPosition.direction == Direction.EAST)
-    		currentPosition.x = 1;
+    		currentPosition.x++;
+    	else if (currentPosition.direction == Direction.WEST)
+    		currentPosition.x--;
+    	else if (currentPosition.direction == Direction.SOUTH)
+    		currentPosition.y--;
     }
 
     public Position getCurrentPosition() {
