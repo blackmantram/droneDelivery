@@ -3,7 +3,6 @@ package co.s4n.dronedelivery.io;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import co.s4n.dronedelivery.core.Direction;
 import co.s4n.dronedelivery.core.Drone;
 import co.s4n.dronedelivery.core.Position;
 
@@ -22,21 +21,30 @@ public class OutputWriter {
 	}
 
 	public void writeCurrentPosition(BufferedWriter writer) throws IOException {
-		writer.write("(0, 0) dirección "+getDirectionText());
+		writer.write(getPositionText()+Texts.CONNECTOR+getDirectionText());
 		writer.newLine();
+	}
+	
+	private String getPositionText()
+	{
+		Position position = drone.getCurrentPosition();
+		return "("+position.x+", "+position.y+")";
 	}
 	
 	private String getDirectionText()
 	{
 		Position position = drone.getCurrentPosition();
-		if (position.direction == Direction.NORTH)
-			return (Texts.NORTH);
-		if (position.direction == Direction.EAST)
-			return (Texts.EAST);
-		if (position.direction == Direction.SOUTH)
-			return (Texts.SOUTH);
-		if (position.direction == Direction.WEST)
-			return (Texts.OCCIDENTE);
-		return "";
+		switch (position.direction) {
+			case NORTH:
+				return (Texts.NORTH);
+			case EAST:
+				return (Texts.EAST);
+			case SOUTH:
+				return (Texts.SOUTH);
+			case WEST:
+				return (Texts.WEST);
+			default:
+				return "";
+		}
 	}
 }

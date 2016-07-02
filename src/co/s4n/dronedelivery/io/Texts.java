@@ -6,5 +6,7 @@ public class Texts {
 	public static final String NORTH = "Norte";
 	public static final String EAST = "Oriente";
 	public static final String SOUTH = "Sur";
-	public static final String OCCIDENTE = "Occidente";
+	public static final String WEST = "Occidente";
+	
+	public static final String CONNECTOR = " dirección ";
 }

@@ -59,6 +59,21 @@ public class OutputTests {
 		verifyLineWritten("(0, 0) dirección Occidente");
 	}
 	
+	@Test
+	public void testCanWriteOneYHeadingNorth() throws IOException {
+		drone.moveForward();
+		otput.writeCurrentPosition(writer);
+		verifyLineWritten("(0, 1) dirección Norte");
+	}
+	
+	@Test
+	public void testCanWriteMinusOneXHeadingEast() throws IOException {
+		drone.turnRight();
+		drone.moveForward();
+		otput.writeCurrentPosition(writer);
+		verifyLineWritten("(1, 0) dirección Oriente");
+	}
+	
 	private void verifyLineWritten(String line) throws IOException
 	{
 		verify(writer).write(line);
