@@ -14,12 +14,24 @@ public class InputReader {
 	}
 
 	public void read(BufferedReader reader) throws IOException{
-		String token = reader.readLine();
-		if (token == "A")
+		String line;
+		while((line = reader.readLine()) != null)
+		{
+			for (int i=0; i<line.length(); i++)
+			{
+				String token = Character.toString(line.charAt(i));
+				readToken(token);
+			}
+		}
+	}
+	
+	private void readToken(String token)
+	{
+		if (token.equals(Tokens.FORWARD))
 			drone.moveForward();
-		if (token == "D")
+		if (token.equals(Tokens.RIGHT))
 			drone.turnRight();
-		if (token == "I")
+		if (token.equals(Tokens.LEFT))
 			drone.turnLeft();
 	}
 }
