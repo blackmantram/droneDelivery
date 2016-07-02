@@ -15,5 +15,9 @@ public class Drone {
 	public void turnRight() {
 		currentPosition.direction = Direction.EAST;
 	}
+
+	public void turnLeft() {
+		currentPosition.direction = Direction.WEST;
+	}
     
 }

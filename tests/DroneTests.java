@@ -28,5 +28,12 @@ public class DroneTests {
         Position position = drone.getCurrentPosition();
         assertEquals(Direction.EAST, position.direction);
     }
+	
+	@Test
+    public void testTurnsLeft() {
+        drone.turnLeft();
+        Position position = drone.getCurrentPosition();
+        assertEquals(Direction.WEST, position.direction);
+    }
 
 }
