@@ -35,6 +35,8 @@ public class DeliveryTests {
 		inOrder.verify(reader).readLine();
 		inOrder.verify(writer).write("(-1, 3) dirección Sur");
 		inOrder.verify(writer).newLine();
+		inOrder.verify(writer).flush();
+		inOrder.verify(writer).close();
 	}
 	
 	private void setup() throws IOException {

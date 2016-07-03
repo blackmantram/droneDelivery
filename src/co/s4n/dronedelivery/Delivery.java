@@ -27,6 +27,8 @@ public class Delivery implements IReadListener {
 	public void go() throws IOException {
 		outputWriter.writeHeader(writer);
 		inputReader.read(reader);
+		writer.flush();
+		writer.close();
 	}
 
 	@Override
