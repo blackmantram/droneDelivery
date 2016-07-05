@@ -5,14 +5,17 @@ import java.io.IOException;
 
 import co.s4n.dronedelivery.core.Drone;
 import co.s4n.dronedelivery.core.Position;
+import co.s4n.dronedelivery.io.direction.DirectionTextFactory;
 
 public class OutputWriter {
 	
 	private Drone drone;
+	private DirectionTextFactory directionTextFactory;
 	
 	public  OutputWriter(Drone drone)
 	{
 		this.drone = drone;
+		directionTextFactory = new DirectionTextFactory();
 	}
 
 	public void writeHeader(BufferedWriter writer) throws IOException {
@@ -34,17 +37,6 @@ public class OutputWriter {
 	private String getDirectionText()
 	{
 		Position position = drone.getCurrentPosition();
-		switch (position.direction) {
-			case NORTH:
-				return (Texts.NORTH);
-			case EAST:
-				return (Texts.EAST);
-			case SOUTH:
-				return (Texts.SOUTH);
-			case WEST:
-				return (Texts.WEST);
-			default:
-				return "";
-		}
+		return directionTextFactory.getDirectionText(position.direction).getText();
 	}
 }
