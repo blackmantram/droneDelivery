@@ -11,8 +11,8 @@ import org.mockito.InOrder;
 import org.mockito.Mockito;
 
 import co.s4n.dronedelivery.Delivery;
+import co.s4n.dronedelivery.config.Texts;
 import co.s4n.dronedelivery.core.Drone;
-import co.s4n.dronedelivery.io.Texts;
 
 public class DeliveryTests {
 	

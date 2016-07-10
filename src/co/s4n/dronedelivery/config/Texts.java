@@ -1,4 +1,4 @@
-package co.s4n.dronedelivery.io;
+package co.s4n.dronedelivery.config;
 
 public class Texts {
 	public static final String HEADER = "== Reporte de entregas ==";

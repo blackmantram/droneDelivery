@@ -2,12 +2,12 @@ package co.s4n.dronedelivery;
 
 import java.io.IOException;
 
+import co.s4n.dronedelivery.config.DeliveryConfig;
+
 public class BulkDelivery {
 	
-	private int MAX_DELIVERIES = 20;
-	
 	public BulkDelivery(IDeliveryFactory provider) throws IOException {
-		for(int i=1; i<=MAX_DELIVERIES; i++)
+		for(int i=1; i<=DeliveryConfig.MAX_DELIVERIES; i++)
 		{
 			String numberFile = getNumberFile(i);
 			Delivery delivery = provider.getDelivery("in"+numberFile+".txt", "out"+numberFile+".txt");
