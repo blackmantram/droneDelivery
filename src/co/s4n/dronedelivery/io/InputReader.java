@@ -16,8 +16,10 @@ public class InputReader {
 
 	public void read(BufferedReader reader) throws IOException{
 		String line;
+		int readings = 0;
 		while((line = reader.readLine()) != null)
 		{
+			readings++;
 			for (int i=0; i<line.length(); i++)
 			{
 				String token = Character.toString(line.charAt(i));
@@ -25,6 +27,8 @@ public class InputReader {
 			}
 			if (readListener != null)
 				readListener.lineRead();
+			if (readings == ReadingConfig.MAX_READINGS)
+				break;
 		}
 	}
 	
