@@ -8,6 +8,7 @@ import java.io.IOException;
 import co.s4n.dronedelivery.core.*;
 import co.s4n.dronedelivery.io.IReadListener;
 import co.s4n.dronedelivery.io.InputReader;
+import co.s4n.dronedelivery.io.ReadingConfig;
 import co.s4n.dronedelivery.io.Tokens;
 
 import org.junit.Before;
@@ -68,6 +69,19 @@ public class InputTests {
 		readPath(Tokens.FORWARD + Tokens.RIGHT + Tokens.FORWARD);
 		inputReader.read(reader);
 		verify(readListener, atMost(1)).lineRead();
+	}
+	
+	@Test
+	public void testCanLimitNumberOfReadings() throws IOException {
+		ReadingConfig.MAX_READINGS = 3;
+		when(reader.readLine())
+			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
+			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
+			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
+			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
+			.thenReturn(null);
+		inputReader.read(reader);
+		verify(reader, times(ReadingConfig.MAX_READINGS)).readLine();
 	}
 	
 	private void readPath(String path) throws IOException
