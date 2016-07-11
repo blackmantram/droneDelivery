@@ -6,14 +6,20 @@ import co.s4n.dronedelivery.config.DeliveryConfig;
 
 public class BulkDelivery {
 	
-	public BulkDelivery(IDeliveryFactory provider) throws IOException {
+	private IDeliveryFactory provider;
+	
+	public BulkDelivery(IDeliveryFactory provider) {
+		this.provider = provider;
+	}
+	
+	public void deliverAll() throws IOException
+	{
 		for(int i=1; i<=DeliveryConfig.MAX_DELIVERIES; i++)
 		{
 			String numberFile = getNumberFile(i);
 			Delivery delivery = provider.getDelivery("in"+numberFile+".txt", "out"+numberFile+".txt");
-			if (delivery == null)
-				break;
-			delivery.go();
+			if (delivery != null)
+				delivery.go();
 		}
 	}
 	

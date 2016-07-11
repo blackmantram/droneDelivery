@@ -10,8 +10,9 @@ import co.s4n.dronedelivery.core.Drone;
 public class DroneDelivery {
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader("./in.txt"));
-		BufferedWriter writer = new BufferedWriter(new FileWriter("./out.txt"));
+		String folder = "./data/";
+		BufferedReader reader = new BufferedReader(new FileReader(folder+"in.txt"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(folder+"out.txt"));
 		Delivery delivery = new Delivery(reader, writer, new Drone());
 		delivery.go();
 	}

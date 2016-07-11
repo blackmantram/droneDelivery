@@ -10,6 +10,7 @@ import org.junit.Test;
 import co.s4n.dronedelivery.BulkDelivery;
 import co.s4n.dronedelivery.Delivery;
 import co.s4n.dronedelivery.IDeliveryFactory;
+import co.s4n.dronedelivery.config.DeliveryConfig;
 
 public class BulkDeliveryTests {
 	
@@ -31,23 +32,17 @@ public class BulkDeliveryTests {
 	}
 	
 	@Test
-	public void testMakesFirstTwoDeliveries() throws IOException {
-		callBulkDelivery(2);
-		verify(fileProvider, times(3)).getDelivery(any(String.class), any(String.class));
-		verify(delivery, times(2)).go();
-	}
-	
-	@Test
-	public void testMakesFirstTenDeliveries() throws IOException {
-		callBulkDelivery(10);
-		verify(fileProvider, times(1)).getDelivery("in10.txt", "out10.txt");
-	}
-	
-	@Test
 	public void testMakesFirstTwentyDeliveries() throws IOException {
 		callBulkDelivery(20);
 		verify(fileProvider, times(1)).getDelivery("in10.txt", "out10.txt");
 		verify(fileProvider, times(1)).getDelivery("in20.txt", "out20.txt");
+	}
+	
+	@Test
+	public void testMakesMaxReadingAttempts() throws IOException {
+		callBulkDelivery(2);
+		verify(fileProvider, times(DeliveryConfig.MAX_DELIVERIES)).getDelivery(any(String.class), any(String.class));
+		verify(delivery, times(2)).go();
 	}
 	
 	private void callBulkDelivery(int filesNumber) throws IOException
@@ -55,7 +50,7 @@ public class BulkDeliveryTests {
 		for(int i=1; i<=filesNumber; i++)
 			ConfigureProviderCall(i, false);
 		ConfigureProviderCall(filesNumber+1, true);
-		new BulkDelivery(fileProvider);
+		new BulkDelivery(fileProvider).deliverAll();
 	}
 	
 	private void ConfigureProviderCall(int number, Boolean shouldReturnNull)
