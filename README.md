@@ -29,7 +29,7 @@ segunda parte de la prueba técnica para S4N desarrollada en java por Sergio Ale
 - Es normal que Eclipse reporte errores en el paquete de pruebas debido a que por defecto no se incluye la librería de JUnit. Para incluir JUnit se debe seleccionar Project > Properties > Java build Path > Libraries > Add Library > item Junit > Next > Finish > Ok.
 - El archivo ```src/DroneDelivery.java``` contiene el main de la aplicación. Si eclipse no ha generado automaticamente la configuración de ejecución, se puede realizar haciendo click en Run > Run as > Java Application y seleccionado el item *DroneDelivery - (default package)* en la lista de selección.
 - El archivo ```src/BulkDroneDelivery.java``` contiene el main que ejecuta los envíos múltiples de la parte II de la prueba. Para ejecutarlo se debe realizar el mismo paso anteriormente descrito
-- El programa se ejecuta en la raiz del proyecto usando el archivo ```in.txt``` incluido y generando el archivo ```out.txt```
+- El programa se ejecuta en la raiz del proyecto usando el archivo ```in.txt``` o los archivos ```in01.txt```, ```in02.txt``` ... ```in20.txt``` incluidos en el directorio ```data``` y generando el archivo ```out.txt``` o los archivos ```out01.txt```, ```out02.txt``` ... ```in20.txt``` según el ejecutable que se utilice
 - Para ejecutar las pruebas seleccionar Run > Run as > JUnit Test
 
 # Error en el ejemplo del encunciado
