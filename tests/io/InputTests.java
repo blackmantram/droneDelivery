@@ -5,11 +5,11 @@ import static org.mockito.Mockito.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import co.s4n.dronedelivery.config.DeliveryConfig;
+import co.s4n.dronedelivery.config.Tokens;
 import co.s4n.dronedelivery.core.*;
 import co.s4n.dronedelivery.io.IReadListener;
 import co.s4n.dronedelivery.io.InputReader;
-import co.s4n.dronedelivery.io.ReadingConfig;
-import co.s4n.dronedelivery.io.Tokens;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -72,8 +72,15 @@ public class InputTests {
 	}
 	
 	@Test
-	public void testCanLimitNumberOfReadings() throws IOException {
-		ReadingConfig.MAX_READINGS = 3;
+	public void testLimitNumberOfReadingsToMaxLines() throws IOException {
+		configLineRead(DeliveryConfig.MAX_LINES+10);
+		inputReader.read(reader);
+		verify(reader, times(DeliveryConfig.MAX_LINES)).readLine();
+	}
+	
+	@Test
+	public void testOverwritesNumberOfReadings() throws IOException {
+		inputReader = new InputReader(drone, 3);
 		when(reader.readLine())
 			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
 			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
@@ -81,7 +88,7 @@ public class InputTests {
 			.thenReturn(Tokens.FORWARD + Tokens.RIGHT)
 			.thenReturn(null);
 		inputReader.read(reader);
-		verify(reader, times(ReadingConfig.MAX_READINGS)).readLine();
+		verify(reader, times(3)).readLine();
 	}
 	
 	private void readPath(String path) throws IOException
@@ -96,6 +103,14 @@ public class InputTests {
 		assertEquals(x, position.x);
 		assertEquals(y, position.y);
 		assertEquals(dir, position.direction);
+	}
+	
+	private void configLineRead(int times) throws IOException{
+		String[] subsequentCalls = new String[times-1];
+		for (int i=0; i<times-1; i++)
+			subsequentCalls[i] =  Tokens.FORWARD + Tokens.RIGHT;
+		when(reader.readLine()).thenReturn(Tokens.FORWARD + Tokens.RIGHT, subsequentCalls)
+			.thenReturn(null);
 	}
 
 }

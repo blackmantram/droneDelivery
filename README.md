@@ -1,7 +1,7 @@
-droneDelivery - Prueba técnica I
+droneDelivery - Prueba técnica II
 ===============
 
-Prueba técnica para S4N desarrollada en java por Sergio Alexander Rico Abella
+segunda parte de la prueba técnica para S4N desarrollada en java por Sergio Alexander Rico Abella
 
 ## Estructura
 
@@ -12,11 +12,11 @@ Prueba técnica para S4N desarrollada en java por Sergio Alexander Rico Abella
 |--in.txt
 ```
 - src: Contiene los archivos fuente de la aplicación. Los paquetes fueron nombrados de acuerdo a la convención de dominio sugerida por oracle https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html 
-- tests: Contiene las pruebas unitarias de la aplicación. Han sido separadas por paquetes de acuerdo al ámbito de las pruebas. Actualmente existen 4 paquetes. 
+- tests: Contiene las pruebas unitarias de la aplicación. Han sido separadas por paquetes de acuerdo al ámbito de las pruebas. Actualmente existen 5 paquetes. 
     - **drone**: pruebas de comportamiento del drone 
     - **io**: pruebas del sistema de escritura/lectura 
     - **delivery**: prueba el sistema que controla los envíos
-    - **demo**: contiene la prueba unitaria que demuestra el ejemplo enviado en el enunciado de la prueba.
+	- **demo**: contiene la prueba unitaria que demuestra el ejemplo enviado en el enunciado de la prueba.
 
     El porcentaje actual de cubrimiento de pruebas (según EclEmma 2.3.3) es del 96.2%.
 - lib: en esta carpeta se incluye el .jar del framework de mockups **mockito** usado para las pruebas y necesaria para que se puedan ejecutar.
@@ -28,7 +28,8 @@ Prueba técnica para S4N desarrollada en java por Sergio Alexander Rico Abella
 - Al hacer click en next Eclipse debe detectar la estructura del proyecto incluyendo la librería de mockito incluída en lib.
 - Es normal que Eclipse reporte errores en el paquete de pruebas debido a que por defecto no se incluye la librería de JUnit. Para incluir JUnit se debe seleccionar Project > Properties > Java build Path > Libraries > Add Library > item Junit > Next > Finish > Ok.
 - El archivo ```src/DroneDelivery.java``` contiene el main de la aplicación. Si eclipse no ha generado automaticamente la configuración de ejecución, se puede realizar haciendo click en Run > Run as > Java Application y seleccionado el item *DroneDelivery - (default package)* en la lista de selección.
-- El programa se ejecuta en la raiz del proyecto usando el archivo ```in.txt``` incluido y generando el archivo ```out.txt```
+- El archivo ```src/BulkDroneDelivery.java``` contiene el main que ejecuta los envíos múltiples de la parte II de la prueba. Para ejecutarlo se debe realizar el mismo paso anteriormente descrito
+- El programa se ejecuta en la raiz del proyecto usando el archivo ```in.txt``` o los archivos ```in01.txt```, ```in02.txt``` ... ```in20.txt``` incluidos en el directorio ```data``` y generando el archivo ```out.txt``` o los archivos ```out01.txt```, ```out02.txt``` ... ```in20.txt``` según el ejecutable que se utilice
 - Para ejecutar las pruebas seleccionar Run > Run as > JUnit Test
 
 # Error en el ejemplo del encunciado

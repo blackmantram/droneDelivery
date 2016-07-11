@@ -8,9 +8,9 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import co.s4n.dronedelivery.config.Texts;
 import co.s4n.dronedelivery.core.Drone;
 import co.s4n.dronedelivery.io.OutputWriter;
-import co.s4n.dronedelivery.io.Texts;
 
 public class OutputTests {
 	

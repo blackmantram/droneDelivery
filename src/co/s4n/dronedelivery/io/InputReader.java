@@ -3,15 +3,23 @@ package co.s4n.dronedelivery.io;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import co.s4n.dronedelivery.config.DeliveryConfig;
+import co.s4n.dronedelivery.config.Tokens;
 import co.s4n.dronedelivery.core.Drone;
 
 public class InputReader {
 	
 	private Drone drone;
 	private IReadListener readListener;
+	private int maxReadings = DeliveryConfig.MAX_LINES;
 	
 	public InputReader(Drone drone){
 		this.drone = drone;
+	}
+	
+	public InputReader(Drone drone, int maxReadings){
+		this.drone = drone;
+		this.maxReadings = maxReadings;
 	}
 
 	public void read(BufferedReader reader) throws IOException{
@@ -27,7 +35,7 @@ public class InputReader {
 			}
 			if (readListener != null)
 				readListener.lineRead();
-			if (readings == ReadingConfig.MAX_READINGS)
+			if (readings == maxReadings)
 				break;
 		}
 	}
